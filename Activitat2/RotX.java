@@ -10,9 +10,9 @@ public static void main(String[] args) throws Exception{
     RotX xifra = new RotX();
     for(int i = 0; i < casos.length; i++){
     
-    String cifrado = xifra.xifraRotX(casos[i], 17);
+    String cifrado = xifra.xifraRotX(casos[i], 60);
     System.out.println(cifrado + "  <- xifrat by ROTX");
-    String descifrado = xifra.desxifraRotX(cifrado, 17);
+    String descifrado = xifra.desxifraRotX(cifrado, 60);
     System.out.println(descifrado + "  <- descifrat by ROTX");
     xifra.forcaBrutaRotX(cifrado);
     }
@@ -55,7 +55,7 @@ private String cifraLetra(char letra, int desplaza){
     }else{
         for(int j = 0 ; j < alfabetoMin.length; j++){
             if(alfabetoMin[j] == letra){
-                nuevoMensaje += alfabetoMin[(j + desplaza)%alfabetoMin.length];
+                nuevoMensaje += alfabetoMin[((j + desplaza)%alfabetoMin.length)];
             }
         }
     }
@@ -67,9 +67,9 @@ private String desxifraLetra(char letra, int desplaza){
     if(Character.isUpperCase(letra)){
         for(int j = 0 ; j < alfabetoMax.length; j++){
             if(alfabetoMax[j] == letra){
-                int result = j - desplaza;
+                int result = (j - desplaza) %alfabetoMax.length;
                 if(result < 0){
-                    nuevoMensaje += alfabetoMax[alfabetoMax.length + result];
+                    nuevoMensaje += (alfabetoMax[alfabetoMax.length + result]);
                 } else{
                     nuevoMensaje += alfabetoMax[result];
                 }
@@ -78,9 +78,9 @@ private String desxifraLetra(char letra, int desplaza){
     }else{
         for(int j = 0 ; j < alfabetoMin.length; j++){
             if(alfabetoMin[j] == letra){
-                int result = j -desplaza;
+                int result = (j - desplaza) %alfabetoMin.length;
                 if(result < 0){
-                    nuevoMensaje += alfabetoMin[alfabetoMin.length + result];
+                    nuevoMensaje += (alfabetoMin[alfabetoMin.length + result]);
                 } else{
                     nuevoMensaje += alfabetoMin[result];
                 }
