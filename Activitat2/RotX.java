@@ -1,27 +1,20 @@
 package Activitat2;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 public class RotX {
     private final String alfabeto = "abcdefghijklmnñopqrstuvwxyzáàéèíìïóòúùü";
     private final char[] alfabetoMin = alfabeto.toCharArray();
     private final char[] alfabetoMax = alfabeto.toUpperCase().toCharArray();
-    private static BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
+    private static final String[] casos = {"Hola e5435m di543c Ignacio234", "SCPF es una empresa de publicidad?!?!", "@Nueva era del Xokas"};
 
 public static void main(String[] args) throws Exception{
-    for(int i = 0; i < 5; i++){
-    System.out.println("Introduce un texto(press enter para salir)");
-    String mensaje = entrada.readLine();
-    if(mensaje.isBlank()){
-        break;
-    }
     RotX xifra = new RotX();
-    mensaje = xifra.xifraRotX(mensaje, 13);
-    System.out.println(mensaje + "   <- xifrat by ROTX");
-    mensaje = xifra.desxifraRotX(mensaje, 13);
-    System.out.println(mensaje + "   <- descifrat by ROTX");
-    xifra.forcaBrutaRotX("Éqíà yn?nzn!!");
+    for(int i = 0; i < casos.length; i++){
+    
+    String cifrado = xifra.xifraRotX(casos[i], 17);
+    System.out.println(cifrado + "  <- xifrat by ROTX");
+    String descifrado = xifra.desxifraRotX(cifrado, 17);
+    System.out.println(descifrado + "  <- descifrat by ROTX");
+    xifra.forcaBrutaRotX(cifrado);
     }
 }
 
@@ -43,7 +36,7 @@ public String desxifraRotX(String mensaje, int desplaza){
     for(int i = 0; i < mensaje.length(); i++){
         char letra = mensaje.charAt(i);
         if(Character.isLetter(letra)){
-            nuevoMensaje.append(desxifraLetra(letra, 13));
+            nuevoMensaje.append(desxifraLetra(letra, desplaza));
         } else{
             nuevoMensaje.append(letra);
         }
@@ -98,9 +91,10 @@ private String desxifraLetra(char letra, int desplaza){
 }
 
 public void forcaBrutaRotX(String cifrat){
-    for(int i = 1; i <= alfabeto.length(); i++){
-        System.out.println(desxifraRotX(cifrat, i));
+    for(int i = 0; i <= alfabeto.length(); i++){
+        System.out.println(desxifraRotX(cifrat, i) + "  <-"+ i);
     }
 }
 
 }
+
