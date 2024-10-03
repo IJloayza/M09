@@ -6,7 +6,7 @@ public class RotX {
     private final String alfabeto = "abcdefghijklmnñopqrstuvwxyzáàéèíìïóòúùü";
     private final char[] alfabetoMin = alfabeto.toCharArray();
     private final char[] alfabetoMax = alfabeto.toUpperCase().toCharArray();
-    private static final String[] casos = {"Hola22em33dic44Ignacio55", "SCPF es una empresa de publicidad?!?!", "@Nueva era del Xokas", "maricon"};
+    private static final String[] casos = {"Hola22em33dic44Ignacio55", "SCPF es una empresa de publicidad?!?!", "@Nueva era del Xokas__"};
 
 public static void main(String[] args) throws Exception{
     RotX xifra = new RotX();
