@@ -1,29 +1,55 @@
 package Activitat2;
 
+import java.util.Random;
+
 public class RotX {
     private final String alfabeto = "abcdefghijklmnñopqrstuvwxyzáàéèíìïóòúùü";
     private final char[] alfabetoMin = alfabeto.toCharArray();
     private final char[] alfabetoMax = alfabeto.toUpperCase().toCharArray();
-    private static final String[] casos = {"Hola e5435m di543c Ignacio234", "SCPF es una empresa de publicidad?!?!", "@Nueva era del Xokas"};
+    private static final String[] casos = {"Hola22em33dic44Ignacio55", "SCPF es una empresa de publicidad?!?!", "@Nueva era del Xokas", "maricon"};
 
 public static void main(String[] args) throws Exception{
     RotX xifra = new RotX();
+    Random random = new Random();
     for(int i = 0; i < casos.length; i++){
-    
-    String cifrado = xifra.xifraRotX(casos[i], 60);
-    System.out.println(cifrado + "  <- xifrat by ROTX");
-    String descifrado = xifra.desxifraRotX(cifrado, 60);
-    System.out.println(descifrado + "  <- descifrat by ROTX");
-    xifra.forcaBrutaRotX(cifrado);
+        int aleatorio = random.nextInt(0, 38);
+        System.out.println("--------------------");
+        System.out.println("numero aleatorio:  " + aleatorio);
+        System.out.println("--------------------");
+        String cifrado = xifra.xifraRotX(casos[i], aleatorio);
+        System.out.println("--------------------");
+        System.out.println("      XIFRA ROT     ");
+        System.out.println("--------------------");
+        System.out.println(cifrado + "  <- xifrat by ROTX");
+        String descifrado = xifra.desxifraRotX(cifrado, aleatorio);
+        System.out.println(descifrado + "  <- descifrat by ROTX");
+        System.out.println("--------------------");
+        System.out.println("     FORÇA BRUTA    ");
+        System.out.println("--------------------");
+        xifra.forcaBrutaRotX(cifrado);
     }
 }
 
 public String xifraRotX(String mensaje, int desplaza){
-    StringBuilder nuevoMensaje = new StringBuilder(mensaje.length());
+    StringBuilder nuevoMensaje = new StringBuilder();
     for(int i = 0; i < mensaje.length(); i++){
         char letra = mensaje.charAt(i);
         if(Character.isLetter(letra)){
-            nuevoMensaje.append(cifraLetra(letra, desplaza));
+            if(Character.isUpperCase(letra)){
+                for(int j = 0 ; j < alfabetoMax.length; j++){
+                    if(alfabetoMax[j] == letra){
+                        nuevoMensaje.append(alfabetoMax[((j + desplaza) % alfabetoMax.length)]);
+                        break;
+                    }
+                }
+            }else{
+                for(int l = 0 ; l < alfabetoMin.length; l++){
+                    if(alfabetoMin[l] == letra){
+                        nuevoMensaje.append(alfabetoMin[((l + desplaza) % alfabetoMin.length)]);
+                        break;
+                    }
+                }
+            }
         } else{
             nuevoMensaje.append(letra);
         }
@@ -32,7 +58,7 @@ public String xifraRotX(String mensaje, int desplaza){
 }
 
 public String desxifraRotX(String mensaje, int desplaza){
-    StringBuilder nuevoMensaje = new StringBuilder(mensaje.length());
+    StringBuilder nuevoMensaje = new StringBuilder();
     for(int i = 0; i < mensaje.length(); i++){
         char letra = mensaje.charAt(i);
         if(Character.isLetter(letra)){
@@ -42,24 +68,6 @@ public String desxifraRotX(String mensaje, int desplaza){
         }
     }
     return nuevoMensaje.toString();
-}
-
-private String cifraLetra(char letra, int desplaza){
-    String nuevoMensaje = "";
-    if(Character.isUpperCase(letra)){
-        for(int j = 0 ; j < alfabetoMax.length; j++){
-            if(alfabetoMax[j] == letra){
-                nuevoMensaje += alfabetoMax[(j + desplaza)%alfabetoMax.length];
-            }
-        }
-    }else{
-        for(int j = 0 ; j < alfabetoMin.length; j++){
-            if(alfabetoMin[j] == letra){
-                nuevoMensaje += alfabetoMin[((j + desplaza)%alfabetoMin.length)];
-            }
-        }
-    }
-    return nuevoMensaje;
 }
 
 private String desxifraLetra(char letra, int desplaza){
@@ -91,7 +99,7 @@ private String desxifraLetra(char letra, int desplaza){
 }
 
 public void forcaBrutaRotX(String cifrat){
-    for(int i = 0; i <= alfabeto.length(); i++){
+    for(int i = 1; i <= alfabeto.length(); i++){
         System.out.println(desxifraRotX(cifrat, i) + "  <-"+ i);
     }
 }
