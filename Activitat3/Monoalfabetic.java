@@ -40,13 +40,6 @@ public class Monoalfabetic{
             alfabeto.add(a);
         }
     }
-    /* private char[] convertToArray(ArrayList<Character> shuffled){
-        char[] mezcla = new char[shuffled.size()];
-        for (int i = 0; i < mezcla.length; i++) {
-            mezcla[i] = shuffled.get(i);
-        }
-        return mezcla;
-    } */
     public static String xifraMonoAlfa(String mensaje){
         StringBuilder s = new StringBuilder();
         for(int i = 0; i < mensaje.length();i++){
