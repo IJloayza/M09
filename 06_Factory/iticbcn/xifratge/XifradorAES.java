@@ -12,7 +12,7 @@ public class XifradorAES implements Xifrador{
     public static final String FORMAT_AES = "AES/CBC/PKCS5Padding";
     private static final int BYTES = 16;
     private byte[] iv = new byte[BYTES];
-    //private static final String CLAU = "LaClauSecretaQueVulguis";
+
     @Override
     public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada{
         try {

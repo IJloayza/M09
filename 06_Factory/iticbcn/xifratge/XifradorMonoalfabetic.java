@@ -7,7 +7,6 @@ public class XifradorMonoalfabetic implements Xifrador{
     private final char[] alfabetoMin = ("abcdefghijklmnñopqrstuvwxyzáàéèíìïóòúùü").toCharArray();
     private Map<Character, Character> m = new HashMap<>();
     
-    //S'ha de crear un constructor
     public XifradorMonoalfabetic(){
         ArrayList<Character> alfabeto =new ArrayList<Character>();
         convertToArrayList(alfabeto);

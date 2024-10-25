@@ -5,8 +5,6 @@ public class XifradorRotX implements Xifrador{
     private final char[] alfabetoMin = alfabeto.toCharArray();
     private final char[] alfabetoMax = alfabeto.toUpperCase().toCharArray();
 
-    
-    //S'ha de crear un constructor
     public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada{
         try {
             int desplaza = Integer.parseInt(clau);
